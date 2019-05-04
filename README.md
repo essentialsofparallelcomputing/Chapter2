@@ -1,5 +1,4 @@
-# Chapter2
-Chapter 2 Examples
+# Chapter 2 Examples
 
 See README.osx, README.linux and soon README.win for MPI and cmake 
 installation instructions
@@ -14,7 +13,7 @@ is at https://www.nongnu.org/numdiff/
 
 Valgrind needs to be installed for the last example.
 
-Listing1
+# Listing1
 
    Requires CMake, CTest, and ndiff
 
@@ -49,9 +48,9 @@ Listing1
    This test is based on the sleep function and timers, so it may or may not pass.
    Test results are in Testing/Temporary/*
    
-Listing2
+# Listing2
 
-   Requires CMake and CTestZZ
+   Requires CMake and CTest
 
    Change into the Listing1 directory
 
@@ -61,7 +60,7 @@ Listing2
          or
       make commit_tests
 
-Listing3
+# Listing3
 
    Requires Valgrind and a C99 standard C compiler
 
