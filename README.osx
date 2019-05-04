@@ -1,0 +1,81 @@
+# Instructions for OSx setup
+
+The two most common package managers for OSx are Brew and Macports. 
+
+=========================================
+Installing command line tools
+=========================================
+
+For either package manager, the command line tools are needed.
+
+Install command line tools:
+   xcode-select --install
+      Click on install
+
+If you have xcode already installed, you may get "not currently available". You should
+already have the command line tools.
+
+You may also need to accept the Xcode license with:
+
+xcodebuild -license
+
+The install for command line tools sometimes changes with versions of xcode, so check
+the latest information on the web for installs
+
+=========================================
+Installing with the Brew package manager
+=========================================
+
+To setup Brew on the Mac (version 10.12 or higher)
+
+From the terminal
+
+Now to start brew installation:
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+After basic install, use "brew help" for commands. Running "brew doctor" will give hints
+on fixing permissions and other problems.
+
+Now install packages
+
+brew install openmpi gcc cmake
+
+The regular Mac compiler has caused issues in the past. The biggest issue is that
+it hasn't supported OpenMP. The brew install will give suggestions to add to the
+shell startup scripts. For bash it will look something like:
+
+export CC=gcc-8
+export CXX=g++-8
+export FC=gfortran-8
+
+Packages are installed in /usr/local. Some changes to the path will be suggested during install such as
+
+export PATH="/usr/local/sbin:$PATH
+
+To install valgrind for the last example. Valgrind often lags behind in releasing for the latest
+Mac OSx version, so check if it is supported.
+
+brew info valgrind
+
+brew install valgrind
+
+=========================================
+Installing with the Macports package manager
+=========================================
+
+Download the pkg or dmg installer from https://www.macports.org/ and go to the download page.
+
+[sudo] port install gcc openmpi cmake
+
+Packages are installed in /opt/local. The sudo command may be required to elevate priviledges for 
+the install. You should be an administrative user to use the sudo command.
+
+Some changes to your path will be needed in one of your shell configuration files. It will look something like:
+
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+To install valgrind for the last example. Valgrind often lags behind in releasing for the latest
+Mac OSx version, so check if it is supported.
+
+[sudo] port install valgrind
+

@@ -1,0 +1,10 @@
+# The Ndiff package can be installed manually by downloading from
+# https://www.math.utah.edu/~beebe/software/ndiff/, 
+# then running “./configure”, “make” and “make install”.
+
+Some of the package managers have an ndiff, but make sure it is the
+numerical differencing package. There is another package with the same
+name that is included in some package managers.
+
+Numdiff is an alternative program that performs the same function. It
+is at https://www.nongnu.org/numdiff/

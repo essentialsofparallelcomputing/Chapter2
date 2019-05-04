@@ -1,0 +1,25 @@
+Download msys2-x86-64 from www.msys2.org and install
+
+Select run now at end of install or open C:\msys64\msys2_shell.bat
+
+Update the package list
+
+pacman -Syuu
+
+Close terminal and startup msys again from Start menu (use search). Update rest of package manager
+
+pacman -Su
+
+Now install the base development system
+
+pacman -S base-devel mingw-w64-x86_64-toolchain
+
+
+Now install Microsoft MPI. Go to https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi
+and download the latest version (v10 for this example). 
+
+Install cmake from pacman or cmake.org?
+
+
+
+
