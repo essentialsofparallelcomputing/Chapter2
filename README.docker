@@ -1,0 +1,7 @@
+To run the example in docker, do the following
+
+Download the docker install file for your system
+
+docker build -t chapter2 .
+
+docker run -it --entrypoint /bin/bash chapter2
