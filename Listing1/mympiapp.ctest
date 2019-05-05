@@ -2,9 +2,9 @@
 # Run a serial test
 ./TimeIt > run0.out
 # Run the first MPI test on 1 processor 
-mpirun -n 1 ./MPITimeIt >& run1.out
+mpirun -n 1 ./MPITimeIt > run1.out
 # Run the second MPI test on 2 processors
-mpirun -n 2 ./MPITimeIt >& run2.out
+mpirun -n 2 ./MPITimeIt > run2.out
 # Compare the output for the two MPI jobs with a tolerance of 1%
 # Reduce the tolerance to 1.0e-5 to get test to fail
 ndiff --relative-error 1.0e-2 run1.out run2.out
