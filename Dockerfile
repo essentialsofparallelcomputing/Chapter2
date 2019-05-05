@@ -1,7 +1,7 @@
 FROM ubuntu AS builder
 WORKDIR /project
 RUN apt-get update && \
-    apt-get install -y bash git cmake git openmpi-bin openmpi-doc libopenmpi-dev g++ vim wget valgrind
+    apt-get install -y bash cmake git openmpi-bin openmpi-doc libopenmpi-dev g++ vim wget valgrind
 RUN git clone https://github.com/essentialsofparallelcomputing/Chapter2.git
 RUN wget ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz; tar -xzvf ndiff-2.00.tar.gz; cd ndiff-2.00; ./configure; make
 ENV PATH /project/ndiff-2.00:$PATH
