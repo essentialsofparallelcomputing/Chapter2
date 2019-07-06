@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
-#include <sys/time.h>
+#include <time.h>
 int main(int argc, char *argv[]){
    struct timespec tstart, tstop, tresult;
 // Start timer, call sleep and stop timer
