@@ -2,16 +2,16 @@
 #include <stdio.h>
 #include <sys/time.h>
 int main(int argc, char *argv[]){
-   struct timeval tstart, tstop, tresult;
+   struct timespec tstart, tstop, tresult;
 // Start timer, call sleep and stop timer
-   gettimeofday(&tstart, NULL);
+   clock_gettime(CLOCK_MONOTONIC, &tstart);
    sleep(30);
-   gettimeofday(&tstop, NULL);
+   clock_gettime(CLOCK_MONOTONIC, &tstop);
 // Timer has two values for resolution and prevent overflows
    tresult.tv_sec = tstop.tv_sec - tstart.tv_sec;
-   tresult.tv_usec = tstop.tv_usec - tstart.tv_usec;
+   tresult.tv_nsec = tstop.tv_nsec - tstart.tv_nsec;
 // Print calculated time from timers
    printf("Elapsed time is %f secs\n", (double)tresult.tv_sec +
-      (double)tresult.tv_usec*1.0e-6);
+      (double)tresult.tv_nsec*1.0e-9);
 }
 

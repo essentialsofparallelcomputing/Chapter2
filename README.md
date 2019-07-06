@@ -1,5 +1,16 @@
 # Chapter 2 Examples
 
+This is supplemental material for Parallel and High Performance Computing,
+Robey, R. and Zamora, Y.
+
+The book may be obtained at
+   http://www.manning.com/?a_aid=ParallelComputingRobey
+
+Copyright: Robert Robey, Yuliana Zamora, and Manning Publications Co.
+Contact info: brobey@earthlink.net, yzamora215@gmail.com
+
+See License.txt for licensing information.
+
 See README.osx, README.linux and soon README.win for MPI and cmake 
 installation instructions
 
