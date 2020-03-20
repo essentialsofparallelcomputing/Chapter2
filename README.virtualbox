@@ -9,48 +9,7 @@
 # On Mac already at /Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso
 
 # Setup new machine
-
-# Click on New
-
-# Type in a name [chapter2]
-# Select Linux and Ubuntu 64-bit
-
-# Select the amount of memory [4096]
-
-# Create a virtual hard disk now
-# Select VDI VirtualBox Disk Image
-
-# Select Fixed Size Disk
-# Select 10 GB
-
-# Should see the new virtual machine added to the list
-
-# Start Ubuntu virtual machine (Green arrow, start)
-
-# Select iso file saved earlier [ubuntu-18.04.2-desktop-amd64.iso]
-
-# Select Install Ubuntu
-
-# Keyboard -- continue
-
-# Select minimal, download updates while installing and install third-party
-
-# Select Erase disk and install Ubuntu
-# Select Install Now
-
-# Select timezone
-
-# Your name [chapter2]
-# Your computer's name [chapter2-virtualbox]
-# Username [chapter2]
-# password [chapter2]
-# Select "Require my password to log in"
-
-# Select continue
-
-# Long time ....
-
-# Installation is complete, Restart computer
+# See the README.autovirtualbox script for directions for setting up base virtual machine
 
 # sign in
 
@@ -60,17 +19,10 @@
 
 # sudo apt-get update
 # sudo apt-get install -y build-essential dkms git
-# Now go up to devices and insert virtualbox-guest-additions-iso
-
-# Make virtualbox window active and select devices from window menus at top of screen
-#     Shared Clipboard --> bidirectional
-#     Drag and Drop --> bidirectional
-#     Install guest additions
-#     Remove optical disk -- from desktop, right click and eject or from devices-->optical disk-->remove disk from virtual drive
-#     reboot and test copy paste
-# Copy on Mac is command-C and paste in Ubuntu is shift-ctrl-v
 
 # Reboot to get cut and paste and screen size fixed
+
+su; usermod -aG sudo username; exit
 
 # Need script on guest to execute
 # git clone --recursive https://github.com/essentialsofparallelcomputing/Chapter2.git

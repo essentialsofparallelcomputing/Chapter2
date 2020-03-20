@@ -1,7 +1,7 @@
 FROM ubuntu:18.04 AS builder
 WORKDIR /project
 RUN apt-get update && \
-    apt-get install -y cmake git vim gcc g++ software-properties-common wget gnupg-agent valgrind \
+    apt-get install -y cmake git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind \
             mpich libmpich-dev \
             openmpi-bin openmpi-doc libopenmpi-dev && \
     apt-get clean && \
@@ -34,7 +34,7 @@ WORKDIR /home/chapter2
 RUN chown -R chapter2:chapter2 /home/chapter2
 USER chapter2
 
-RUN git clone https://github.com/essentialsofparallelcomputing/Chapter2.git
+RUN git clone --recursive https://github.com/essentialsofparallelcomputing/Chapter2.git
 
 RUN cd Chapter2; make
 
