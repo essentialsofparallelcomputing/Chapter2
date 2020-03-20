@@ -3,7 +3,7 @@ All: Listing1 Listing2 Listing3
 Listing1: Listing1/build/TimeIt
 
 Listing1/build/TimeIt:
-	cd Listing1; mkdir build; cd build; cmake ..; make; make test
+	cd Listing1; mkdir build; cd build; cmake ..; make; #make test
 
 Listing2: Listing2/build/TimeIt
 
