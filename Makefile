@@ -13,7 +13,7 @@ Listing2/build/TimeIt:
 Listing3: Listing3/build/test
 
 Listing3/build/test:
-	cd Listing3; mkdir build; cd build; cmake ..; make
+	cd Listing3; make
 
 clean:
 	cd Listing1; rm -rf build

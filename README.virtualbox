@@ -1,93 +1,102 @@
+# These are instructions to setup a Ubuntu virtual machine for the examples in
+# this chapter. The first part of the instructions must be done manually. The
+# last half can be done by executing this file as a script as instructed.
 
-Download VirtualBox and install
+# Download VirtualBox and install
 
-Download Ubuntu desktop install and save on local disk [ubuntu-18.04.2-desktop-amd64.iso]
+# Download Ubuntu desktop install and save on local disk [ubuntu-18.04.2-desktop-amd64.iso]
+# Download VBoxGuestAdditions.iso
+# On Mac already at /Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso
 
-Setup new machine
+# Setup new machine
 
-Click on New
+# Click on New
 
-Type in a name [chapter2]
-Select Linux and Ubuntu 64-bit
+# Type in a name [chapter2]
+# Select Linux and Ubuntu 64-bit
 
-Select the amount of memory [4096]
+# Select the amount of memory [4096]
 
-Create a virtual hard disk now
-Select VDI VirtualBox Disk Image
+# Create a virtual hard disk now
+# Select VDI VirtualBox Disk Image
 
-Select Fixed Size Disk
-Select 10 GB
+# Select Fixed Size Disk
+# Select 10 GB
 
-Should see the new virtual machine added to the list
+# Should see the new virtual machine added to the list
 
-Start Ubuntu virtual machine (Green arrow, start)
+# Start Ubuntu virtual machine (Green arrow, start)
 
-Select iso file saved earlier [ubuntu-18.04.2-desktop-amd64.iso]
+# Select iso file saved earlier [ubuntu-18.04.2-desktop-amd64.iso]
 
-Select Install Ubuntu
+# Select Install Ubuntu
 
-Keyboard -- continue
+# Keyboard -- continue
 
-Select minimal, download updates while installing and install third-party
+# Select minimal, download updates while installing and install third-party
 
-Select Erase disk and install Ubuntu
-Select Install Now
+# Select Erase disk and install Ubuntu
+# Select Install Now
 
-Select timezone
+# Select timezone
 
-Your name [chapter2]
-Your computer's name [chapter2-virtualbox]
-Username [chapter2]
-password [chapter2]
-Select "Require my password to log in"
+# Your name [chapter2]
+# Your computer's name [chapter2-virtualbox]
+# Username [chapter2]
+# password [chapter2]
+# Select "Require my password to log in"
 
-Select continue
+# Select continue
 
-Long time ....
+# Long time ....
 
-Installation is complete, Restart computer
+# Installation is complete, Restart computer
 
-sign in
+# sign in
 
-click through whats new
+# click through whats new
 
-select dots at bottom left and terminal
+# select dots at bottom left and terminal
 
-sudo apt-get update
-sudo apt-get install gcc make
+# sudo apt-get update
+# sudo apt-get install -y build-essential dkms git
+# Now go up to devices and insert virtualbox-guest-additions-iso
 
-If Software updater prompts, install updated software --> wait ....
+# Make virtualbox window active and select devices from window menus at top of screen
+#     Shared Clipboard --> bidirectional
+#     Drag and Drop --> bidirectional
+#     Install guest additions
+#     Remove optical disk -- from desktop, right click and eject or from devices-->optical disk-->remove disk from virtual drive
+#     reboot and test copy paste
+# Copy on Mac is command-C and paste in Ubuntu is shift-ctrl-v
 
-Make virtualbox window active and select devices from window menus at top of screen
-    Shared Clipboard --> bidirectional
-    Drag and Drop --> bidirectional
-    Install guest additions
-    Remove optical disk -- from desktop, right click and eject or from devices-->optical disk-->remove disk from virtual drive
-    reboot and test copy paste
-Copy on Mac is command-C and paste in Ubuntu is shift-ctrl-v
+# Reboot to get cut and paste and screen size fixed
+
+# Need script on guest to execute
+# git clone --recursive https://github.com/essentialsofparallelcomputing/Chapter2.git
 
 sudo apt-get update && \
 sudo apt-get install -y cmake git software-properties-common openmpi-bin openmpi-doc libopenmpi-dev g++ vim wget valgrind && \
 sudo apt-get clean && \
 sudo rm -rf /var/lib/apt/lists/*
 
-sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+# Installing latest GCC compiler (version 9) for best vectorization
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 sudo apt-get update && \
-sudo apt-get install -y gcc-9 g++-9 && \
+sudo apt-get install -y gcc-9 g++-9 gfortran-9 && \
 sudo apt-get clean && \
 sudo rm -rf /var/lib/apt/lists/*
 
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 90\
-                         --slave /usr/bin/g++ g++ /usr/bin/g++-9\
-                         --slave /usr/bin/gcov gcov /usr/bin/gcov-9
-
-git clone https://github.com/essentialsofparallelcomputing/Chapter2.git
+sudo update-alternatives --install /usr/bin/gcc       gcc       /usr/bin/gcc-9 90 \
+                         --slave   /usr/bin/g++       g++       /usr/bin/g++-9 \
+                         --slave   /usr/bin/gfortran  gfortran  /usr/bin/gfortran-9 \
+                         --slave   /usr/bin/gcov      gcov      /usr/bin/gcov-9
 
 wget ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz; tar -xzvf ndiff-2.00.tar.gz; cd ndiff-2.00; ./configure; make; cd ..
+
+If Software updater prompts, install updated software --> wait ....
 
 echo 'export PATH=/project/ndiff-2.00:$PATH' >> ~/.bash_profile
 source ~/.bash_profile
 
-cd Chapter2/Listing1 && mkdir build && cd build && cmake .. && make && cd ../../..
-cd Chapter2/Listing2 && mkdir build && cd build && cmake .. && make && cd ../../..
-cd Chapter2/Listing3 && cd ../..
+cd Chapter2; make
