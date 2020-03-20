@@ -19,13 +19,19 @@
 
 # Reboot to get cut and paste and screen size fixed
 
+# visudo
+# su
+# add %vboxsf ALL=(ALL) ALL
+# exit
+# sudo apt-get install -y git
+
 # Need script on guest to execute
 # git clone --recursive https://github.com/essentialsofparallelcomputing/Chapter2.git
 
-su; usermod -aG sudo username; exit
-
 sudo apt-get update && \
-sudo apt-get install -y cmake git software-properties-common openmpi-bin openmpi-doc libopenmpi-dev g++ vim wget valgrind && \
+sudo apt-get install -y cmake git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind && \
+                        mpich libmpich-dev \
+                        openmpi-bin openmpi-doc libopenmpi-dev && \
 sudo apt-get clean && \
 sudo rm -rf /var/lib/apt/lists/*
 
@@ -41,7 +47,7 @@ sudo update-alternatives --install /usr/bin/gcc       gcc       /usr/bin/gcc-9 9
                          --slave   /usr/bin/gfortran  gfortran  /usr/bin/gfortran-9 \
                          --slave   /usr/bin/gcov      gcov      /usr/bin/gcov-9
 
-wget ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz; tar -xzvf ndiff-2.00.tar.gz; cd ndiff-2.00; ./configure; make; cd ..
+wget ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz; tar -xzvf ndiff-2.00.tar.gz; cd ndiff-2.00; ./configure; make; cd ../..
 
 If Software updater prompts, install updated software --> wait ....
 

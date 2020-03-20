@@ -28,7 +28,7 @@ RUN ./configure && make
 SHELL ["/bin/bash", "-c"]
 ENV PATH /project/ndiff-2.00:$PATH
 
-RUN groupadd chapter2 && useradd -m -s /bin/bash -g chapter2 chapter2
+RUN groupadd -r chapter2 && useradd -r -m -s /bin/bash -g chapter2 chapter2
 
 WORKDIR /home/chapter2
 RUN chown -R chapter2:chapter2 /home/chapter2
@@ -36,6 +36,7 @@ USER chapter2
 
 RUN git clone --recursive https://github.com/essentialsofparallelcomputing/Chapter2.git
 
-RUN cd Chapter2; make
+WORKDIR /home/chapter2/Chapter2
+RUN make
 
 ENTRYPOINT ["bash"]
