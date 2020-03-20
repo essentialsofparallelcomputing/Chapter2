@@ -19,17 +19,19 @@
 
 # Reboot to get cut and paste and screen size fixed
 
-# visudo
+# Add user to sudo list if needed
 # su
+# visudo
 # add %vboxsf ALL=(ALL) ALL
 # exit
+
 # sudo apt-get install -y git
 
 # Need script on guest to execute
 # git clone --recursive https://github.com/essentialsofparallelcomputing/Chapter2.git
 
 sudo apt-get update && \
-sudo apt-get install -y cmake git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind && \
+sudo apt-get install -y cmake git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind \
                         mpich libmpich-dev \
                         openmpi-bin openmpi-doc libopenmpi-dev && \
 sudo apt-get clean && \
