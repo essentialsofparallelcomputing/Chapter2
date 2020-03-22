@@ -1,5 +1,6 @@
 FROM ubuntu:18.04 AS builder
 WORKDIR /project
+ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y cmake git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind \
             mpich libmpich-dev \
@@ -7,7 +8,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Installing latest GCC compiler (version 9) for best vectorization
+# Installing latest GCC compiler (version 9)
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test
 RUN apt-get update && \
     apt-get install -y gcc-9 g++-9 gfortran-9 && \
@@ -37,6 +38,7 @@ USER chapter2
 RUN git clone --recursive https://github.com/essentialsofparallelcomputing/Chapter2.git
 
 WORKDIR /home/chapter2/Chapter2
-RUN make
+# Uncomment for testing
+#RUN make
 
 ENTRYPOINT ["bash"]
