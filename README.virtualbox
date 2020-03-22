@@ -57,4 +57,4 @@ If Software updater prompts, install updated software --> wait ....
 echo 'export PATH=/project/ndiff-2.00:$PATH' >> ~/.bash_profile
 source ~/.bash_profile
 
-cd Chapter2; make
+cd Chapter2; #make
