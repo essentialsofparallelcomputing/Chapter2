@@ -1,6 +1,5 @@
 FROM ubuntu:18.04 AS builder
 WORKDIR /project
-ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get install -y cmake git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind \
             mpich libmpich-dev \
