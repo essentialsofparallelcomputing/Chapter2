@@ -17,8 +17,6 @@
 
 # select dots at bottom left and start up a terminal
 
-# Reboot to get cut and paste and screen size fixed
-
 # Add user to sudo list if needed
 # su
 # visudo
@@ -50,7 +48,7 @@ sudo update-alternatives --install /usr/bin/gcc       gcc       /usr/bin/gcc-9 9
                          --slave   /usr/bin/gfortran  gfortran  /usr/bin/gfortran-9 \
                          --slave   /usr/bin/gcov      gcov      /usr/bin/gcov-9
 
-wget ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz; tar -xzvf ndiff-2.00.tar.gz; cd ndiff-2.00; ./configure; make; cd ../..
+wget ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz; tar -xzvf ndiff-2.00.tar.gz; cd ndiff-2.00; ./configure; make; cd ..
 
 # If Software updater prompts, install updated software --> wait ....
 
