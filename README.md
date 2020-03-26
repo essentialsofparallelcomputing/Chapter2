@@ -1,13 +1,12 @@
-# Chapter 2 Examples
-
-This is supplemental material for Parallel and High Performance Computing,
-Robey, R. and Zamora, Y.
+# Chapter 2 Planning for parallel
+This is from Chapter 3 of the Parallel and High Performance Computing, Robey and Zamora,
+Manning Publications, available at http://manning.com
 
 The book may be obtained at
    http://www.manning.com/?a_aid=ParallelComputingRobey
 
-Copyright: Robert Robey, Yuliana Zamora, and Manning Publications Co.
-Contact info: brobey@earthlink.net, yzamora215@gmail.com
+Copyright 2019 Robert Robey, Yuliana Zamora, and Manning Publications
+Emails: brobey@earthlink.net, yzamora215@gmail.com
 
 See License.txt for licensing information.
 
@@ -81,6 +80,3 @@ Valgrind needs to be installed for the last example.
 
       make
       valgrind --leak-check=full ./test 2
-
-   
- 
