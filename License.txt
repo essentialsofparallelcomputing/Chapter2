@@ -1,5 +1,5 @@
-# Chapter 3 Performance limits and profiling
-This is from Chapter 3 of the Parallel and High Performance Computing, Robey and Zamora,
+# Chapter 2 Planning for parallel
+This is from Chapter 2 of the Parallel and High Performance Computing, Robey and Zamora,
 Manning Publications. The book may be obtained at
    http://www.manning.com/?a_aid=ParallelComputingRobey
 
