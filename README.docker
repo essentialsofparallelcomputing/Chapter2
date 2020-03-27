@@ -1,3 +1,8 @@
+# This docker build sets up the following software
+#    GCC, G++, GFortran 9.0 compilers
+#    Cachegrind and valgrind
+#    OpenMPI and MPICH
+
 # To run the example in docker, do the following
 
 # Download the docker install file for your system
