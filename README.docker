@@ -1,12 +1,17 @@
-To run the example in docker, do the following
+# This docker build sets up the following software
+#    GCC, G++, GFortran 9.0 compilers
+#    Cachegrind and valgrind
+#    OpenMPI and MPICH
 
-Download the docker install file for your system
+# To run the example in docker, do the following
 
-For the pre-built docker image, run
+# Download the docker install file for your system
+
+# For the pre-built docker image, run
 
    docker run -p 4000:80 -it --entrypoint /bin/bash essentialsofparallelcomputing/chapter2
 
-Alternatively, build an image locally and run it 
+# Alternatively, build an image locally and run it 
 
    docker build -t chapter2 .
 

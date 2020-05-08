@@ -1,80 +1,58 @@
+# These are instructions to setup a Ubuntu virtual machine for the examples in
+# this chapter. The first part of the instructions must be done manually. The
+# last half can be done by executing this file as a script as instructed.
 
-Download VirtualBox and install
+# Download VirtualBox and install
 
-Download Ubuntu desktop install and save on local disk [ubuntu-18.04.2-desktop-amd64.iso]
+# Download Ubuntu desktop install and save on local disk [ubuntu-18.04.2-desktop-amd64.iso]
+# Download VBoxGuestAdditions.iso
+# On Mac already at /Applications/VirtualBox.app/Contents/MacOS/VBoxGuestAdditions.iso
 
-Setup new machine
+# Setup new machine
+# See the README.autovirtualbox script for directions for setting up base virtual machine
 
-Click on New
+# sign in
 
-Type in a name [chapter2]
-Select Linux and Ubuntu 64-bit
+# click through whats new
 
-Select the amount of memory [4096]
+# select dots at bottom left and start up a terminal
 
-Create a virtual hard disk now
-Select VDI VirtualBox Disk Image
+# Add user to sudo list if needed
+# su
+# visudo
+# add %vboxsf ALL=(ALL) ALL
+# exit
 
-Select Fixed Size Disk
-Select 10 GB
+# sudo apt-get install -y git
 
-Should see the new virtual machine added to the list
+# Need script on guest to execute
+# git clone --recursive https://github.com/essentialsofparallelcomputing/Chapter2.git
+# Run the script Chapter2/README.virtualbox
 
-Start Ubuntu virtual machine (Green arrow, start)
+sudo apt-get update && \
+sudo apt-get install -y cmake git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind \
+                        mpich libmpich-dev \
+                        openmpi-bin openmpi-doc libopenmpi-dev && \
+sudo apt-get clean && \
+sudo rm -rf /var/lib/apt/lists/*
 
-Select iso file saved earlier [ubuntu-18.04.2-desktop-amd64.iso]
+# Installing latest GCC compiler (version 9) for best vectorization
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+sudo apt-get update && \
+sudo apt-get install -y gcc-9 g++-9 gfortran-9 && \
+sudo apt-get clean && \
+sudo rm -rf /var/lib/apt/lists/*
 
-Select Install Ubuntu
-
-Keyboard -- continue
-
-Select minimal, download updates while installing and install third-party
-
-Select Erase disk and install Ubuntu
-Select Install Now
-
-Select timezone
-
-Your name [chapter2]
-Your computer's name [chapter2-virtualbox]
-Username [chapter2]
-password [chapter2]
-Select "Require my password to log in"
-
-Select continue
-
-Long time ....
-
-Installation is complete, Restart computer
-
-sign in
-
-click through whats new
-
-select dots at bottom left and terminal
-
-sudo apt-get update
-sudo apt-get install gcc make
-
-If Software updater prompts, install updated software --> wait ....
-
-Make virtualbox window active and select devices from window menus at top of screen
-    Shared Clipboard --> bidirectional
-    Drag and Drop --> bidirectional
-    Install guest additions
-    Remove optical disk -- from desktop, right click and eject or from devices-->optical disk-->remove disk from virtual drive
-    reboot and test copy paste
-Copy on Mac is command-C and paste in Ubuntu is shift-ctrl-v
-
-sudo apt-get install -y bash cmake git openmpi-bin openmpi-doc libopenmpi-dev g++ vim wget valgrind
-
-git clone https://github.com/essentialsofparallelcomputing/Chapter2.git
+sudo update-alternatives --install /usr/bin/gcc       gcc       /usr/bin/gcc-9 90 \
+                         --slave   /usr/bin/g++       g++       /usr/bin/g++-9 \
+                         --slave   /usr/bin/gfortran  gfortran  /usr/bin/gfortran-9 \
+                         --slave   /usr/bin/gcov      gcov      /usr/bin/gcov-9
 
 wget ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz; tar -xzvf ndiff-2.00.tar.gz; cd ndiff-2.00; ./configure; make; cd ..
+
+# If Software updater prompts, install updated software --> wait ....
 
 echo 'export PATH=/project/ndiff-2.00:$PATH' >> ~/.bash_profile
 source ~/.bash_profile
 
-cd Chapter2/Listing1 && mkdir build && cd build && cmake .. && make && cd ../../..
-cd Chapter2/Listing2 && mkdir build && cd build && cmake .. && make && cd ../../..
-cd Chapter2/Listing3 && cd ../..
+cd Chapter2; #make
