@@ -1,4 +1,4 @@
-git clone --recursive https://github.com/essentialsofparallelcomputing/Chapter2.git# These are instructions to setup a Ubuntu virtual machine for the examples in
+# These are instructions to setup a Ubuntu virtual machine for the examples in
 # this chapter. The first part of the instructions must be done manually. The
 # last half can be done by executing this file as a script as instructed.
 
