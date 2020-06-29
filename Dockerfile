@@ -14,8 +14,8 @@ RUN apt-get update -q && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# We are installing both OpenMPI and MPICH. We could use the update -q-alternatives to switch between them
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 90\
+# We are installing both OpenMPI and MPICH. We could use the update alternatives to switch between them
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 90r
                         --slave /usr/bin/g++ g++ /usr/bin/g++-10\
                         --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-10\
                         --slave /usr/bin/gcov gcov /usr/bin/gcov-10
