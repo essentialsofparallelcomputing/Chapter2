@@ -1,7 +1,8 @@
 On Ubuntu:
 
 Make sure you have one of the latest versions of GCC
+sudo apt-get install -q -y gcc-10 g++-10 gfortran-10
+
+sudo apt-get install cmake git bash g++ gcc gfortran software-properties-common vim wget valgrind
 
 sudo apt-get install openmpi-bin openmpi-doc libopenmpi-dev
-
-sudo apt-get install cmake git bash g++ gcc vim wget valgrind

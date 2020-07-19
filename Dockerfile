@@ -1,7 +1,7 @@
 FROM ubuntu:18.04 AS builder
 WORKDIR /project
 RUN apt-get update -q && DEBIAN_FRONTEND=noninteractive \
-    apt-get install -q -y --no-install-recommends cmake make git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind \
+    apt-get install -q -y cmake make git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind \
             mpich libmpich-dev \
             openmpi-bin openmpi-doc libopenmpi-dev && \
     apt-get clean && \
