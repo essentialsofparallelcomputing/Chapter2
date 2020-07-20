@@ -1,7 +1,8 @@
 FROM ubuntu:18.04 AS builder
 WORKDIR /project
-RUN apt-get update -q && DEBIAN_FRONTEND=noninteractive \
-    apt-get install -q -y cmake make git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind \
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get -qq update && \
+    apt-get -qq install -y cmake make git vim gcc g++ gfortran software-properties-common wget gnupg-agent valgrind \
             mpich libmpich-dev \
             openmpi-bin openmpi-doc libopenmpi-dev && \
     apt-get clean && \
@@ -9,8 +10,8 @@ RUN apt-get update -q && DEBIAN_FRONTEND=noninteractive \
 
 # Installing latest GCC compiler (version 10)
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test
-RUN apt-get update -q && \
-    apt-get install -q -y gcc-10 g++-10 gfortran-10 && \
+RUN apt-get -qq update && \
+    apt-get -qq install -y gcc-10 g++-10 gfortran-10 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
