@@ -1,0 +1,27 @@
+#!/bin/sh
+# Sets up Ubuntu 18.04 from bare-bones installation 
+# Comment out what you don't need or run line-by-line, manually
+export DEBIAN_FRONTEND=noninteractive
+sudo apt-get -qq install -y cmake make git vim gcc g++ gfortran wget gnupg-agent valgrind \
+   mpich libmpich-dev openmpi-bin openmpi-doc libopenmpi-dev
+
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+sudo apt-get -qq install -y gcc-10 g++-10 gfortran-10
+
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 90 \
+                         --slave /usr/bin/g++ g++ /usr/bin/g++-10 \
+                         --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-10 \
+                         --slave /usr/bin/gcov gcov /usr/bin/gcov-10
+sudo apt-get clean
+sudo rm -rf /var/lib/apt/lists/*
+
+sudo wget -q ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz
+tar -xzf ndiff-2.00.tar.gz
+cd ndiff-2.00/
+./configure && make
+sudo make install
+cd ..
+rm -rf ndiff-2.00
+
+make clean
+make
