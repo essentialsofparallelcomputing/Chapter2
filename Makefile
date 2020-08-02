@@ -13,7 +13,8 @@ Listing3:
 
 Gcov:
 	cd Gcov && mkdir build && cd build && cmake .. && make && \
-	   ./stream_triad && gcov CMakeFiles/stream_triad.dir/stream_triad.c.c
+	   ./stream_triad && gcov CMakeFiles/stream_triad.dir/stream_triad.c.c && \
+	   more stream_triad.c.gcov
 
 clean:
 	cd Listing1 && rm -rf build
