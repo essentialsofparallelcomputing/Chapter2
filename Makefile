@@ -12,7 +12,8 @@ Listing3:
 	cd Listing3 && make && make memcheck
 
 Gcov:
-	cd Gcov && mkdir build && cd build && cmake .. && make && gcov CMakeFiles/stream_triad.dir/stream_triad.c
+	cd Gcov && mkdir build && cd build && cmake .. && make && \
+	   ./stream_triad && gcov CMakeFiles/stream_triad.dir/stream_triad.c.c
 
 clean:
 	cd Listing1 && rm -rf build
