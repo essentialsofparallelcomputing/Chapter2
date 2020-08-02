@@ -3,7 +3,7 @@
 
 #define NTIMES 16
 // large enough to force into main memory
-#define STREAM_ARRAY_SIZE 80000000
+#define STREAM_ARRAY_SIZE 10000000
 static double a[STREAM_ARRAY_SIZE], b[STREAM_ARRAY_SIZE], c[STREAM_ARRAY_SIZE];
 
 int main(int argc, char *argv[]){
