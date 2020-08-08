@@ -7,6 +7,15 @@
 
 # Download the docker install file for your system
 
+# some scripts are provided to 
+
+# runs the docker run command. If there is no local image, downloads the version from dockerhub
+   ./docker_run.sh
+# builds a local chapter3 image using the local Dockerfile
+   ./docker_build.sh
+# cleans up all the docker images and downloads
+   ./docker_cleanup.sh
+
 # For the pre-built docker image, run
 
    docker run -it --entrypoint /bin/bash essentialsofparallelcomputing/chapter2
