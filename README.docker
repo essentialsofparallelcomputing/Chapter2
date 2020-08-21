@@ -26,5 +26,5 @@
    docker run -it --entrypoint /bin/bash chapter2
 
 
-   docker build -t essentialsofparallelcomputing/chapter2
+   docker build -t essentialsofparallelcomputing/chapter2 .
    ./docker_run.sh
