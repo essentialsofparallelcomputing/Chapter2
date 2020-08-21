@@ -11,8 +11,6 @@
 
 # runs the docker run command. If there is no local image, downloads the version from dockerhub
    ./docker_run.sh
-# builds a local chapter3 image using the local Dockerfile
-   ./docker_build.sh
 # cleans up all the docker images and downloads
    ./docker_cleanup.sh
 
