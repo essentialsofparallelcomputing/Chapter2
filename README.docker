@@ -2,6 +2,7 @@
 #    GCC, G++, GFortran 10.0 compilers
 #    Valgrind
 #    OpenMPI and MPICH
+#    ndiff
 
 # To run the example in docker, do the following
 
@@ -23,3 +24,7 @@
    docker build -t chapter2 .
 
    docker run -it --entrypoint /bin/bash chapter2
+
+
+   docker build -t essentialsofparallelcomputing/chapter2
+   ./docker_run.sh
