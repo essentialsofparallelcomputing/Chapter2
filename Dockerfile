@@ -24,8 +24,8 @@ RUN update-alternatives \
       --slave   /usr/bin/gcov     gcov     /usr/bin/gcov-10     && \
     chmod u+s /usr/bin/update-alternatives
 
-RUN wget -q ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz && \
-    tar -xzf ndiff-2.00.tar.gz && cd /project/ndiff-2.00 && \
+RUN wget -q http://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz && \
+    tar -xzf ndiff-2.00.tar.gz && cd /tmp/ndiff-2.00 && \
     mkdir -p /usr/local/man/man1 && \
     ./configure && make && make install && cd .. && rm -rf ndiff-2.00
 
