@@ -1,15 +1,15 @@
-FROM ubuntu:20.04 AS builder
+# Part of the examples from the Parallel and High Performance Computing
+# Robey and Zamora, Manning Publications
+#   https://github.com/EssentialsofParallelComputing/Chapter2
 #
 # The built image can be found at:
 #
 #   https://hub.docker.com/r/essentialsofparallelcomputing/chapter2
 #
-# Authors:
+# Author:
 # Bob Robey <brobey@earthlink.net>
-#
-# Part of the examples from the Parallel and High Performance Computing
-# Robey and Zamora, Manning Publications
-#   https://github.com/EssentialsofParallelComputing/Chapter2
+ 
+FROM ubuntu:20.04 AS builder
 
 ARG DOCKER_LANG=en_US
 ARG DOCKER_TIMEZONE=America/Denver
@@ -17,10 +17,7 @@ ARG DOCKER_TIMEZONE=America/Denver
 WORKDIR /tmp
 RUN apt-get -qq update && \
     DEBIAN_FRONTEND=noninteractive \
-    apt-get -qq install -y cmake make git vim gcc g++ gfortran wget gnupg-agent valgrind \
-            locales tzdata \
-            mpich libmpich-dev \
-            openmpi-bin openmpi-doc libopenmpi-dev && \
+    apt-get -qq install -y locales tzdata && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV LANG=$DOCKER_LANG.UTF-8 \
@@ -31,6 +28,13 @@ RUN ln -fs /usr/share/zoneinfo/$DOCKER_TIMEZONE /etc/localtime && \
     dpkg-reconfigure -f noninteractive locales tzdata
 
 ENV LC_ALL=$DOCKER_LANG.UTF-8
+
+RUN apt-get -qq update && \
+    DEBIAN_FRONTEND=noninteractive \
+    apt-get -qq install -y cmake make git vim gcc g++ gfortran wget gnupg-agent valgrind \
+            mpich libmpich-dev \
+            openmpi-bin openmpi-doc libopenmpi-dev && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Installing latest GCC compiler (version 10)
 RUN apt-get -qq update && \
@@ -58,13 +62,14 @@ SHELL ["/bin/bash", "-c"]
 
 RUN groupadd -r chapter2 && useradd -r -m -s /bin/bash -g chapter2 chapter2
 
-WORKDIR /home/chapter2
-RUN chown -R chapter2:chapter2 /home/chapter2
-USER chapter2
+ARG DOCKER_USER=chapter2
+WORKDIR /home/$DOCKER_USER
+RUN chown -R $DOCKER_USER:$DOCKER_USER /home/$DOCKER_USER
+USER $DOCKER_USER
 
 RUN git clone --recursive https://github.com/essentialsofparallelcomputing/Chapter2.git
 
-WORKDIR /home/chapter2/Chapter2
+WORKDIR /home/$DOCKER_USER/Chapter2
 # Uncomment for testing
 #RUN make
 

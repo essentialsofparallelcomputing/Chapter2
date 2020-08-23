@@ -8,7 +8,8 @@
 
 # Download the docker install file for your system
 
-# some scripts are provided to 
+# some scripts are provided 
+
 
 # runs the docker run command. If there is no local image, downloads the version from dockerhub
    ./docker_run.sh
@@ -23,8 +24,12 @@
 
    docker build -t chapter2 .
 
-   docker run -it --entrypoint /bin/bash chapter2
+# and Docker arguments can be used to set your preferred language and timezone
 
+   docker build --build-arg DOCKER_LANG=en_US --build-arg \
+      DOCKER_TIMEZONE=America/Denver --build-arg DOCKER_USER=$USER -t chapter2 .
+
+   docker run -it --entrypoint /bin/bash chapter2
 
    docker build -t essentialsofparallelcomputing/chapter2 .
    ./docker_run.sh
