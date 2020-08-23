@@ -1,11 +1,36 @@
 FROM ubuntu:20.04 AS builder
+#
+# The built image can be found at:
+#
+#   https://hub.docker.com/r/essentialsofparallelcomputing/chapter2
+#
+# Authors:
+# Bob Robey <brobey@earthlink.net>
+#
+# Part of the examples from the Parallel and High Performance Computing
+# Robey and Zamora, Manning Publications
+#   https://github.com/EssentialsofParallelComputing/Chapter2
+
+ARG DOCKER_LANG=en_US
+ARG DOCKER_TIMEZONE=America/Denver
+
 WORKDIR /tmp
 RUN apt-get -qq update && \
     DEBIAN_FRONTEND=noninteractive \
     apt-get -qq install -y cmake make git vim gcc g++ gfortran wget gnupg-agent valgrind \
+            locales tzdata \
             mpich libmpich-dev \
             openmpi-bin openmpi-doc libopenmpi-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+ENV LANG=$DOCKER_LANG.UTF-8 \
+    LANGUAGE=$DOCKER_LANG:UTF-8
+
+RUN ln -fs /usr/share/zoneinfo/$DOCKER_TIMEZONE /etc/localtime && \
+    locale-gen $LANG && update-locale LANG=$LANG && \
+    dpkg-reconfigure -f noninteractive locales tzdata
+
+ENV LC_ALL=$DOCKER_LANG.UTF-8
 
 # Installing latest GCC compiler (version 10)
 RUN apt-get -qq update && \
