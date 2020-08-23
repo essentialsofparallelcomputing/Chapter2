@@ -18,6 +18,8 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 90 \
                          --slave /usr/bin/gfortran gfortran /usr/bin/gfortran-10 \
                          --slave /usr/bin/gcov gcov /usr/bin/gcov-10
 
+sudo chmod u+s /usr/bin/update-alternatives
+
 sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*
 
 sudo wget -q ftp://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz

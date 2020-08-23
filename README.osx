@@ -44,15 +44,15 @@ The regular Mac compiler has caused issues in the past. The biggest issue is tha
 it hasn't supported OpenMP. The brew install will give suggestions to add to the
 shell startup scripts. For bash it will look something like:
 
-export CC=gcc-8
-export CXX=g++-8
-export FC=gfortran-8
+export CC=gcc-10
+export CXX=g++-10
+export FC=gfortran-10
 
 Packages are installed in /usr/local. Some changes to the path will be suggested during install such as
 
 export PATH="/usr/local/sbin:$PATH
 
-To install valgrind for the last example. Valgrind often lags behind in releasing for the latest
+Note: To install valgrind for the last example. Valgrind often lags behind in releasing for the latest
 Mac OSx version, so check if it is supported.
 
 brew info valgrind
