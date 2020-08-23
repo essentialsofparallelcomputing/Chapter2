@@ -8,7 +8,7 @@
 #
 # Author:
 # Bob Robey <brobey@earthlink.net>
- 
+
 FROM ubuntu:20.04 AS builder
 
 ARG DOCKER_LANG=en_US
