@@ -54,7 +54,7 @@ RUN update-alternatives \
     chmod u+s /usr/bin/update-alternatives
 
 RUN wget -q http://ftp.math.utah.edu/pub/misc/ndiff-2.00.tar.gz && \
-    tar -xzf ndiff-2.00.tar.gz && cd /tmp/ndiff-2.00 && \
+    tar -xzf ndiff-2.00.tar.gz && cd ndiff-2.00 && \
     mkdir -p /usr/local/man/man1 && \
     ./configure && make && make install && cd .. && rm -rf ndiff-2.00
 
