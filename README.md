@@ -5,7 +5,7 @@ Manning Publications, available at http://manning.com
 The book may be obtained at
    http://www.manning.com/?a_aid=ParallelComputingRobey
 
-Copyright 2019-2020 Robert Robey, Yuliana Zamora, and Manning Publications
+Copyright 2019-2021 Robert Robey, Yuliana Zamora, and Manning Publications
 Emails: brobey@earthlink.net, yzamora215@gmail.com
 
 See License.txt for licensing information.
@@ -30,7 +30,11 @@ Valgrind needs to be installed for the last example.
    Change into the Listing1 directory
 
    Run the test with
-      cmake .
+
+      cd Listing1
+      mkdir build
+      cd build
+      cmake ..
       make
       make test
          or
@@ -62,9 +66,14 @@ Valgrind needs to be installed for the last example.
 
    Requires CMake and CTest
 
-   Change into the Listing1 directory
+   Change into the Listing2 directory
 
    Run the test with
+
+      cd Listing2
+      mkdir build
+      cd build
+      cmake ..
       make
       ctest -R commit
          or
@@ -74,9 +83,10 @@ Valgrind needs to be installed for the last example.
 
    Requires Valgrind and a C99 standard C compiler
 
-   Change into the Listing1 directory
+   Change into the Listing3 directory
 
    Run the valgrind test with
 
+      cd Listing3
       make
       valgrind --leak-check=full ./test 2
